@@ -43,3 +43,34 @@ func CreateNote(c *fiber.Ctx) error {
 
 	return c.JSON(note)
 }
+
+func GetNotes(c *fiber.Ctx) error {
+	cookie := c.Cookies("jwt")
+
+	token, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return []byte(SecretKey), nil
+	})
+
+	if err != nil {
+		c.Status(fiber.StatusUnauthorized)
+		return c.JSON(fiber.Map{
+			"message": "unauthenticated",
+		})
+	}
+
+	claims := token.Claims.(*jwt.StandardClaims)
+
+	var notes []models.Note
+
+	database.DB.Where("user_id = ?", claims.Issuer).Find(&notes)
+
+	if len(notes) == 0 {
+		c.Status(fiber.StatusNotFound)
+		return c.JSON(fiber.Map{
+			"message": "No notes created",
+		})
+	}
+
+	return c.JSON(notes)
+}
+
