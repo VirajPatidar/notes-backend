@@ -106,6 +106,49 @@ func GetNoteById(c *fiber.Ctx) error {
 	return c.JSON(note)
 }
 
+func UpdateNoteById(c *fiber.Ctx) error {
+	var data map[string]string
+
+	if err := c.BodyParser(&data); err != nil {
+		return err
+	}
+
+	cookie := c.Cookies("jwt")
+
+	token, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return []byte(SecretKey), nil
+	})
+
+	if err != nil {
+		c.Status(fiber.StatusUnauthorized)
+		return c.JSON(fiber.Map{
+			"message": "unauthenticated",
+		})
+	}
+
+	claims := token.Claims.(*jwt.StandardClaims)
+
+	note_id := c.Params("NoteID")
+
+	var note models.Note
+
+	database.DB.Where("id = ? AND user_id = ?", note_id, claims.Issuer).Find(&note)
+
+	if note.ID == 0 {
+		c.Status(fiber.StatusNotFound)
+		return c.JSON(fiber.Map{
+			"message": "Note not found",
+		})
+	}
+
+	note.Title = data["title"]
+	note.Category = data["category"]
+	note.Details = data["details"]
+	database.DB.Save(&note)
+
+	return c.JSON(note)
+}
+
 func DeleteNote(c *fiber.Ctx) error {
 	cookie := c.Cookies("jwt")
 
