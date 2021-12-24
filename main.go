@@ -19,7 +19,7 @@ func main() {
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "https://go-notes.netlify.app",
 		AllowMethods: "GET, OPTIONS, POST, HEAD, PUT, DELETE, PATCH",
-		AllowHeaders:  "Origin, Content-Type, Set-Cookie, Content-Length, Accept, Cookie, Accept-Encoding, X-CSRF-Token, Authorization",
+		AllowHeaders:  "Origin, Content-Type, Set-Cookie, Content-Length, Accept, Cookie, Accept-Encoding, X-CSRF-Token, Authorization, X-Requested-With",
 		AllowCredentials: true,
 	}))
 
