@@ -17,7 +17,7 @@ func main() {
 	port := os.Getenv("PORT")
 
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:3000",
+		AllowOrigins: "https://go-notes.netlify.app",
 		AllowHeaders:  "Origin, Content-Type, Set-Cookie, Content-Length, Accept, Cookie, Accept-Encoding, X-CSRF-Token, Authorization",
 		AllowCredentials: true,
 	}))
