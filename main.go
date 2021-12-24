@@ -18,7 +18,7 @@ func main() {
 
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "http://localhost:3000",
-		AllowHeaders:  "Origin, Content-Type, Set-Cookie, Content-Length, Accept, Cookie, Accept-Encoding, X-CSRF-Token, Authorization, X-Requested-With",
+		AllowHeaders:  "Origin, Content-Type, Set-Cookie, Content-Length, Accept, Cookie, Accept-Encoding, X-CSRF-Token, Authorization",
 		AllowCredentials: true,
 	}))
 
