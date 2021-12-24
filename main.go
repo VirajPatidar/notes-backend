@@ -17,8 +17,8 @@ func main() {
 	port := os.Getenv("PORT")
 
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:3000/",
-		AllowHeaders:  "Origin, Content-Type, Accept",
+		AllowOrigins: "http://localhost:3000",
+		AllowHeaders:  "Origin, Content-Type, Set-Cookie, Content-Length, Accept, Cookie, Accept-Encoding, X-CSRF-Token, Authorization, X-Requested-With",
 		AllowCredentials: true,
 	}))
 
