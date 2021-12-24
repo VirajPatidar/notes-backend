@@ -4,7 +4,7 @@ _This project serves as backend for [Note Making Application (notes-frontend)](h
 
 <br/>
 
-<!-- **Link to the website:** [https://oems.netlify.app/](https://oems.netlify.app/) -->
+**Link to the website:** [https://go-notes.netlify.app/](https://go-notes.netlify.app/)
 
 **Link to frontend repo:** [https://github.com/VirajPatidar/notes-frontend](https://github.com/VirajPatidar/notes-frontend)
 
