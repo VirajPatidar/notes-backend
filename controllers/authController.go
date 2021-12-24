@@ -80,10 +80,11 @@ func Login(c *fiber.Ctx) error {
 	}
 
 	cookie := fiber.Cookie{
-		Name:     "jwt",
-		Value:    token,
+		Name: "jwt",
+		Value: token,
+		Path: "/",
 		Domain: "go-notes.netlify.app",
-		Expires:  time.Now().Add(time.Hour * 24),
+		Expires: time.Now().Add(time.Hour * 24),
 		HTTPOnly: true,
 		Secure: true,
 		SameSite: "none",
@@ -119,10 +120,11 @@ func User(c *fiber.Ctx) error {
 
 func Logout(c *fiber.Ctx) error {
 	cookie := fiber.Cookie{
-		Name:     "jwt",
-		Value:    "",
+		Name: "jwt",
+		Value: "",
+		Path: "/",
 		Domain: "go-notes.netlify.app",
-		Expires:  time.Now().Add(-time.Hour),
+		Expires: time.Now().Add(-time.Hour),
 		HTTPOnly: true,
 		Secure: true,
 		SameSite: "none",
