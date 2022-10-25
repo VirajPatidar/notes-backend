@@ -3,8 +3,8 @@ package database
 import (
 	"github.com/VirajPatidar/NotesBackend/models"
 	"gorm.io/driver/postgres"
-    _ "github.com/lib/pq"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+    "github.com/lib/pq"
+	"github.com/jinzhu/gorm/dialects/postgres"
 	"gorm.io/gorm"
 	"os"
 	"fmt"
