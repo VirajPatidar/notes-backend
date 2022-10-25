@@ -5,7 +5,6 @@ go 1.17
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gofiber/fiber/v2 v2.21.0
-	github.com/heroku/x v0.0.43
 	github.com/jinzhu/gorm v1.9.16
 	github.com/lib/pq v1.10.4
 	golang.org/x/crypto v0.0.0-20211108221036-ceb1ce70b4fa

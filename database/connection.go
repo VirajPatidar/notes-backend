@@ -3,7 +3,6 @@ package database
 import (
 	"github.com/VirajPatidar/NotesBackend/models"
 	"gorm.io/driver/postgres"
-    _ "github.com/heroku/x/hmetrics/onload"
     _ "github.com/lib/pq"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"gorm.io/gorm"
